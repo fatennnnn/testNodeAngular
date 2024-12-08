@@ -1,0 +1,8 @@
+{
+     "mongoURI" : "mongodb+srv://nodeAngular:nodeAngular@cluster0.tmfmv.mongodb.net/",
+    "jwtSecret": "secret",
+    "email": "fatennouni@gmail.com",
+    "password": "nodeangular"
+
+
+}
