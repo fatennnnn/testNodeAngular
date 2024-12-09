@@ -1,0 +1,122 @@
+<div class="col-md-12">
+    <div class="card card-container">
+      <img
+        id="profile-img"
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        class="profile-img-card"
+      />
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nom"
+            [(ngModel)]="form.nom"
+            required
+            minlength="3"
+            maxlength="20"
+            #nom="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && nom.errors }"
+          />
+          <div class="invalid-feedback" *ngIf="nom.errors && f.submitted">
+            <div *ngIf="nom.errors['required']">Nom is required</div>
+            <div *ngIf="nom.errors['minlength']">Nom must be at least 3 characters</div>
+            <div *ngIf="nom.errors['maxlength']">Nom must be at most 20 characters</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input
+            type="text"
+            class="form-control"
+            name="prenom"
+            [(ngModel)]="form.prenom"
+            required
+            minlength="3"
+            maxlength="20"
+            #prenom="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && prenom.errors }"
+          />
+          <div class="invalid-feedback" *ngIf="prenom.errors && f.submitted">
+            <div *ngIf="prenom.errors['required']">Prénom is required</div>
+            <div *ngIf="prenom.errors['minlength']">Prénom must be at least 3 characters</div>
+            <div *ngIf="prenom.errors['maxlength']">Prénom must be at most 20 characters</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            type="number"
+            class="form-control"
+            name="phone"
+            [(ngModel)]="form.phone"
+            required
+            #phone="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && phone.errors }"
+          />
+          <div class="invalid-feedback" *ngIf="phone.errors && f.submitted">
+            <div *ngIf="phone.errors['required']">Phone is required</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            #email="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+          />
+          <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors['required']">Email is required</div>
+            <div *ngIf="email.errors['email']">Email must be a valid email address</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+          />
+          <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors['required']">Password is required</div>
+            <div *ngIf="password.errors['minlength']">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Sign Up</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
+    </div>
+  </div>
+  
